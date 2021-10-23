@@ -1,0 +1,57 @@
+
+body{
+ padding-top: 20px;
+  font-family:'poppins',sans-serif;
+
+}
+.movie_list{
+  display:flex;
+  gap:24px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+ 
+}
+
+.box{
+ 
+  width: 350px;
+border-radius: 5px;
+ 
+}
+
+.movie_image{
+  height:500px;
+  width:350px;
+ object-fit: cover;
+  
+ 
+}
+.movie_heading{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.content{
+  padding: 5px;
+}
+.movie_summary{
+  text-align:none;
+}
+.like_dislike{
+  display: flex;
+  gap:10px;
+  font-size: 5px;
+}
+button{
+  padding: 5px;
+  font-size: 15px;
+}
+.movie_name{
+  font-weight:bolder;
+  font-size: 30px;
+ 
+}
+.movie_rating{
+  font-weight: bold;
+  font-size: 17px;
+}
