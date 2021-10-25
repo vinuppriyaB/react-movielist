@@ -52,7 +52,7 @@ function ColorBox({color}){
 function Movielist(){
   let initial_movielist = [
     {
-      mname: "Ratatouille",
+      name: "Ratatouille",
       pic:
         "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/2b18044415b238c004e702aaf1dc693daf886d9dadf4b78e1b1bcc0b9df10f8c._RI_V_TTW_.jpg",
       summary:
@@ -60,7 +60,7 @@ function Movielist(){
       rating: "8 "
     },
     {
-      mname: "Alita:Battle Angle",
+      name: "Alita:Battle Angle",
       pic:
         "https://proseandcomiccons.files.wordpress.com/2019/02/slick-new-poster-for-alita-battle-angel1.jpg?w=640",
       summary:
@@ -68,7 +68,7 @@ function Movielist(){
         rating: " 7.7"
     },
     {
-      mname: "City Hunter",
+      name: "City Hunter",
       pic:
         "https://static.xemovie.com/images/Film/Series/City%20hunter.jpg",
       summary:
@@ -76,7 +76,7 @@ function Movielist(){
         rating: "8.1"
     },
     {
-      mname: " Interstellar",
+      name: " Interstellar",
       pic:"https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
        
       summary:
@@ -84,7 +84,7 @@ function Movielist(){
       rating: " 8.7"
     },
     {
-      mname: "Matrix",
+      name: "Matrix",
       pic:
         "https://i.pinimg.com/originals/32/8a/e4/328ae47c2f46f03447a4825a476a3391.jpg",
            summary:
@@ -108,7 +108,7 @@ function Movielist(){
         <TextField className="input_text" id="outlined-basic" label="Summary" variant="outlined" onChange={(event)=>setSummary(event.target.value)} />
         <TextField className="input_text" id="outlined-basic" label="Rating" variant="outlined" onChange={(event)=>setRating(event.target.value)} />
         
-        <Button variant="contained" onClick={()=>{console.log(movielist); return setMovielist([{mname:moviename, pic:pic, summary:summary, rating:rating},...movielist])}}>Add Movie</Button>
+        <Button variant="contained" onClick={()=>{console.log(movielist); return setMovielist([{name:moviename, pic:pic, summary:summary, rating:rating},...movielist])}}>Add Movie</Button>
 
       </div>
        
