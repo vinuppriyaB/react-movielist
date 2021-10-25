@@ -38,14 +38,13 @@ border-radius: 5px;
   text-align:none;
 }
 .like_dislike{
-  display: flex;
-  gap:10px;
-  font-size: 5px;
+  font-size: 20px !important;
+  
 }
-button{
+/* button{
   padding: 5px;
-  font-size: 15px;
-}
+  font-size: 30px;
+} */
 .movie_name{
   font-weight:bolder;
   font-size: 30px;
@@ -54,4 +53,19 @@ button{
 .movie_rating{
   font-weight: bold;
   font-size: 17px;
+}
+.input_field{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap:20px;
+  margin:20px;
+  padding:10px;
+}
+.input_text{
+  width: 300px;
+}
+Button{
+  height:50px;
+ 
 }

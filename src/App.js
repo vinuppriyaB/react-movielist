@@ -1,10 +1,58 @@
 
 import './App.css';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import {useState} from "react";
 function App() {
-  let movie = [
+  return(
+    <div>
+      <Movielist/>
+      {/* <ColorList/>
+      <ColorBox /> */}
+    </div>
+  );
+  
+ 
+}
+function ColorList(){
+  
+  const [color,setColor]=useState("orange");
+  const initial_colors=["blue","yellow","black"]
+  const [colors,setColors]=useState(initial_colors);
+  const styles={backgroundColor:color,color:"black"};
+  return(
+    <div>
+       <input
+    value={color}
+    style={styles}
+    onChange={(event)=>setColor(event.target.value)}
+    placeholder="enter color"
+    />
+    <button onClick={() => setColors([...colors,color])}> Add color</button>
+    {colors.map((clr)=> (
+    <ColorBox color={clr} />
+    ))}
+    </div>
+  );
+   
+   
+}
+function ColorBox({color}){
+  const styles={
+    height:"70px",
+    width:"200px",
+    backgroundColor:color,
+    margin:"10px 0px"
+  }
+  return(
+    <div style={styles}></div>
+
+  )
+}
+function Movielist(){
+  let initial_movielist = [
     {
-      name: "Ratatouille",
+      mname: "Ratatouille",
       pic:
         "https://images-na.ssl-images-amazon.com/images/S/pv-target-images/2b18044415b238c004e702aaf1dc693daf886d9dadf4b78e1b1bcc0b9df10f8c._RI_V_TTW_.jpg",
       summary:
@@ -12,7 +60,7 @@ function App() {
       rating: "8 "
     },
     {
-      name: "Alita:Battle Angle",
+      mname: "Alita:Battle Angle",
       pic:
         "https://proseandcomiccons.files.wordpress.com/2019/02/slick-new-poster-for-alita-battle-angel1.jpg?w=640",
       summary:
@@ -20,7 +68,7 @@ function App() {
         rating: " 7.7"
     },
     {
-      name: "City Hunter",
+      mname: "City Hunter",
       pic:
         "https://static.xemovie.com/images/Film/Series/City%20hunter.jpg",
       summary:
@@ -28,7 +76,7 @@ function App() {
         rating: "8.1"
     },
     {
-      name: " Interstellar",
+      mname: " Interstellar",
       pic:"https://m.media-amazon.com/images/I/A1JVqNMI7UL._SL1500_.jpg",
        
       summary:
@@ -36,7 +84,7 @@ function App() {
       rating: " 8.7"
     },
     {
-      name: "Matrix",
+      mname: "Matrix",
       pic:
         "https://i.pinimg.com/originals/32/8a/e4/328ae47c2f46f03447a4825a476a3391.jpg",
            summary:
@@ -44,12 +92,30 @@ function App() {
       rating: " 8.7"
     }
   ];
+  
 
+  const [moviename,setmovieName]=useState("");
+  const [pic,setPic]=useState("");
+  const [summary,setSummary]=useState("");
+  const [rating,setRating]=useState("");
+ 
+ const [movielist,setMovielist]=useState(initial_movielist)
   return (
     <div className="App">
+      <div className="input_field">
+      <TextField className="input_text" id="outlined-basic" label="Movie Name" variant="outlined" onChange={(event)=>setmovieName(event.target.value)} />
+        <TextField className="input_text" id="outlined-basic" label="Poster Link" variant="outlined" onChange={(event)=>setPic(event.target.value)} />
+        <TextField className="input_text" id="outlined-basic" label="Summary" variant="outlined" onChange={(event)=>setSummary(event.target.value)} />
+        <TextField className="input_text" id="outlined-basic" label="Rating" variant="outlined" onChange={(event)=>setRating(event.target.value)} />
+        
+        <Button variant="contained" onClick={()=>{console.log(movielist); return setMovielist([{mname:moviename, pic:pic, summary:summary, rating:rating},...movielist])}}>Add Movie</Button>
+
+      </div>
+       
       <div className="movie_list">
-      {movie.map((mv) => (
+      {movielist.map((mv,index) => (
         <Movie
+        key={index}
           name={mv.name}
           pic={mv.pic}
           summary={mv.summary}
@@ -60,10 +126,14 @@ function App() {
       </div>
       
     </div>
-  );
+     );
+  
 }
 
 function Movie({ name, pic, summary, rating }) {
+  
+  // const styles={display:show ? "block":"none"};
+  const [show,setShow]=useState(false);
   return (
     <div className="box">
       <img className="movie_image" src={pic} alt={name} />
@@ -75,12 +145,19 @@ function Movie({ name, pic, summary, rating }) {
           <div class="movie_rating">
             <p>⭐{rating}</p>
           </div>
+          
         </div>
 
         <Counter />
+        <div>
+        <Button variant="contained" onClick={()=>setShow(!show)}>{show?"Hide":"Show"}</Button>
+           
+          </div>
         <div className="movie_summary">
-          <p>{summary}</p>
+          {/* <p style={styles}>{summary}</p> */}
+          {show ? <p>{summary}</p>: ""}
         </div>
+        
 
       </div>
       
@@ -94,12 +171,10 @@ function Counter(){
  const [dislike,setdisLike]=useState(0);
   return (
     <div className="like_dislike">
-      <div>
-        <button onClick={()=>setLike(like + 1)}>👍{like}</button>
-      </div>
-      <div>
-        <button onClick={()=>setdisLike(dislike+1)}>👎{dislike}</button>
-      </div>
+      
+      <Button variant="text" className="like_dislike" onClick={()=>setLike(like + 1)}>👍{like}</Button>
+      <Button variant="text" className="like_dislike" onClick={()=>setdisLike(dislike+1)}>👎{dislike}</Button>
+    
     </div>
   )
 }
