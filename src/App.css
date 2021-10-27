@@ -48,6 +48,8 @@ border-radius: 5px;
 .movie_name{
   font-weight:bolder;
   font-size: 30px;
+  margin:0px;
+ 
  
 }
 .movie_rating{
@@ -56,16 +58,46 @@ border-radius: 5px;
 }
 .input_field{
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap:20px;
+  /* justify-content: space-around;
+  flex-wrap: wrap; */
+  flex-direction: column;
+  gap:30px;
   margin:20px;
-  padding:10px;
+  padding:20px 60px;
 }
-.input_text{
+/* .input_text{
   width: 300px;
-}
-Button{
+} */
+/* Button{
   height:50px;
  
+} */
+.hide_show_btn{
+  font-size: 40px !important;
+ 
+  margin:0px;
+}
+
+.not-found{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bolder;
+  margin: 0;
+  
+}
+.movie-trailer{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 20px;
+  background-color: rgb(250, 206, 212) !important;
+  object-fit: cover;
+}
+.display-content{
+  width:50%;
+  padding:0px 100px !important;
+
 }
