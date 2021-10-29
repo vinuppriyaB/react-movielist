@@ -30,6 +30,7 @@ border-radius: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 .content{
   padding: 5px;
@@ -54,7 +55,7 @@ border-radius: 5px;
 }
 .movie_rating{
   font-weight: bold;
-  font-size: 17px;
+  font-size: 20px;
 }
 .input_field{
   display: flex;
@@ -99,5 +100,10 @@ border-radius: 5px;
 .display-content{
   width:50%;
   padding:0px 100px !important;
+
+}
+.counter-button{
+  display: flex;
+  justify-content: space-between;
 
 }

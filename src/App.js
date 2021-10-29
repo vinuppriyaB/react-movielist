@@ -5,12 +5,10 @@ import {ColorList} from './ColorList';
 import {Welcome} from './Welcome';
 import { AddMovie } from './AddMovie';
 import { useState } from "react";
-import { Switch, Route, Link, Redirect ,useParams} from "react-router-dom";
-import Button from '@mui/material/Button';
-import { useHistory } from "react-router-dom";
+import { Switch, Route, Link, Redirect} from "react-router-dom";
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-
+import { MovieDetails } from './MovieDetails';
+import {EditDetail} from './EditDetail';
 
 
 
@@ -56,6 +54,7 @@ function App() {
     }
   ];
   const [movielist, setMovielist] = useState(initial_movielist);
+  const [cmovielist, setcMovielist] = useState(movielist[0]);
  
   
   return(
@@ -76,6 +75,10 @@ function App() {
           {/* Change the url bar but dont refresh */}
           <Link to="/color">color</Link>
         </li>
+        <li>
+          {/* Change the url bar but dont refresh */}
+          <Link to="/movie/edit/:id">Edit</Link>
+        </li>
       </ul>
 
       <hr />
@@ -89,21 +92,26 @@ function App() {
         <Route path="/movie/add">
           <AddMovie movielist={movielist} setMovielist={setMovielist} />
         </Route>
-        <Route path="/movie/:id">
+        <Route exact path="/movie/edit/:id">
+          <EditDetail movielist={movielist} setMovielist={setMovielist} />
+        </Route>
+        <Route exact path="/movie/:id">
           <MovieDetails  movielist={movielist}/>
         </Route>
         <Route path="/movie">
-          <Movielist  movielist={movielist} />
+          <Movielist  movielist={movielist} setMovielist={setMovielist} />
         </Route>
         <Route path="/color">
           <ColorList/>
         </Route>
+        
         <Route exact path="/">
           <Welcome />
         </Route>
         <Route path="**">
           <NotFound />
         </Route>
+        
       </Switch>
     </div>
   
@@ -124,52 +132,5 @@ function NotFound(){
     </div>
   )
 }
-function MovieDetails({movielist})
-{
-  let history = useHistory();
-  
-  const {id}=useParams();
-  
-  const movie=movielist[id]
- 
-  return(
-    <div className="movie-trailer">
-      <div>
-        <iframe 
-          width="1000" 
-          height="720" 
-          src={movie.trailer} 
-          title="YouTube video player" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-
-      </div>
-      
-      <div className="display-content">
-        <CardContent>
-          <div >
-            <p className="movie_name"> {movie.name} <span className="movie_rating">⭐{movie.rating}</span></p>
-          </div>
-          <div className="movie_summary">
-            <p>{movie.summary}</p> 
-          </div>
-        </CardContent>
-        </div>
-        
-          <Button 
-            onClick={() => {
-            history.goBack();
-            }}
-            variant="contained">Back</Button>
-        
-    </div>
-
-  )
-    
-}
-
-
 
 export default App;

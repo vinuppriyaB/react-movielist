@@ -13,6 +13,7 @@ export function AddMovie({ movielist, setMovielist }) {
     const [pic, setPic] = useState("");
     const [summary, setSummary] = useState("");
     const [rating, setRating] = useState("");
+    const [trailer, setTrailer] = useState("");
 
     // const [movielist, setMovielist] = useState(movielist);
  
@@ -21,11 +22,12 @@ export function AddMovie({ movielist, setMovielist }) {
         setPic("");
         setSummary("");
         setRating("");
+        setTrailer("")
     };
 
     const addMovie = () => {
         console.log("before   "+movielist);
-        setMovielist([{ name, pic, summary, rating }, ...movielist]);
+        setMovielist([{ name, pic, summary, rating,trailer }, ...movielist]);
         console.log("after  "+movielist);
         resetMovieForm();
     };
@@ -58,6 +60,13 @@ export function AddMovie({ movielist, setMovielist }) {
                 label="Rating"
                 variant="outlined"
                 value={rating}
+                onChange={event => setRating(event.target.value)} />
+                <TextField
+                className="input_text"
+                id="outlined-basic"
+                label="Tailer"
+                variant="outlined"
+                value={trailer}
                 onChange={event => setRating(event.target.value)} />
             <Button
                 variant="contained"

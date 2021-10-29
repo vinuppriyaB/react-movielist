@@ -2,10 +2,10 @@
 import { Movie } from './Movie';
 
 
- export function Movielist({movielist}) {
+ export function Movielist({movielist,setMovielist}) {
   
   return (
-    <section>
+    
      
       <div className="movie_list">
         {movielist.map((mv, index) => (
@@ -15,10 +15,16 @@ import { Movie } from './Movie';
             pic={mv.pic}
             summary={mv.summary}
             rating={mv.rating} 
-            id={index}/>
+            id={index}
+            movielist={movielist}
+            setMovielist={setMovielist}
+           
+            />
         ))}
+
+        
       </div>
-    </section>
+    
   );
 
 }
