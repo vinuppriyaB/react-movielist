@@ -2,6 +2,10 @@
 body{
  padding-top: 20px;
   font-family:'poppins',sans-serif;
+  
+}
+.App{
+  min-width: 100vh;
 
 }
 .movie_list{
@@ -9,7 +13,6 @@ body{
   gap:24px;
   flex-wrap: wrap;
   justify-content: space-evenly;
- 
 }
 
 .box{
@@ -94,7 +97,7 @@ border-radius: 5px;
   flex-direction: column;
   align-items: center;
   font-size: 20px;
-  background-color: rgb(250, 206, 212) !important;
+  
   object-fit: cover;
 }
 .display-content{
@@ -107,3 +110,51 @@ border-radius: 5px;
   justify-content: space-between;
 
 }
+.square {
+  height: 100px;
+  width: 100px;
+  background-color:#123;
+  font-size: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border:2px solid white;
+  /* color:white; */
+  cursor: pointer;
+  box-shadow:5px 5px 5px 5px rgb(248, 212, 157);
+
+}
+
+
+.board{
+  /* width:1000px; */
+  /* width:min-content; */
+  margin:100px auto;
+  display: grid;
+ 
+
+  grid-template-columns:1fr 1fr 1fr;
+  /* grid-template-rows:1fr 1fr 1fr; */
+
+
+
+}
+.ttt-game{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: blanchedalmond;
+  /* background-color: rgb(248, 212, 157); */
+  height:100vh;
+  color:#123;
+}
+.start-player{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap:20px;
+
+}
+

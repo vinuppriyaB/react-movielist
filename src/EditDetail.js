@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -5,9 +6,11 @@ import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export function EditDetail({ movielist, setMovielist }) {
+
+    let history = useHistory();
     const {id}=useParams();
     const movie= movielist[id];
-    let history = useHistory();
+   console.log(movie)
   const [name, setName] = useState(movie.name);
   const [pic, setPic] = useState(movie.pic);
   const [summary, setSummary] = useState(movie.summary);
