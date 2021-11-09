@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import IconButton from '@mui/material/IconButton';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import ThumbDownAltIcon from '@mui/icons-material/ThumbDownAlt';
@@ -12,6 +12,10 @@ export function Counter(){
   // const like=1;
   const [like,setLike] =useState(0);
   const [dislike,setdisLike]=useState(0);
+  useEffect(()=>{
+    console.log("change");
+    
+  })
    return (
      <div className="counter-button">
      <div className="like_dislike">

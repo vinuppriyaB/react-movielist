@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import IconButton from "@mui/material/IconButton";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -23,12 +23,21 @@ export function Movie({
   id,
   setMovielist,
   movielist,
+  getMovies,
   
 }) {
   // const styles={display:show ? "block":"none"};
   const [show, setShow] = useState(false);
   const history = useHistory();
   //   const { id } = useParams();
+
+  
+  const deleteMovies=(id)=>{
+    fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id,
+    {method:"DELETE",}).then(()=>getMovies())
+          
+  }
+  
 
   return (
     <Card>
@@ -72,7 +81,7 @@ export function Movie({
           {/* <div className="delete-edit-btn"> */}
           <IconButton
             onClick={() => {
-              console.log(id + " " + movielist);
+              
 
               history.push("/movie/edit/" + id);
             }}
@@ -85,13 +94,14 @@ export function Movie({
           </IconButton>
 
           <IconButton
-            onClick={() => {
-              console.log(id + " " + movielist);
-              let currentlist = movielist.filter((mv, index) => index !== id);
-              setMovielist(currentlist);
+            onClick={() => { deleteMovies(id) }}
+              // console.log(id + " " + movielist);
+              // let currentlist = movielist.filter((mv, index) => index !== id);
+              // setMovielist(currentlist);
+             
+              
 
-              console.log(currentlist);
-            }}
+                    
             aria-label="delete"
             color="error"
             size="large"

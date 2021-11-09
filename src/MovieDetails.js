@@ -2,13 +2,23 @@ import { useParams } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { useHistory } from "react-router-dom";
 import CardContent from '@mui/material/CardContent';
+import {  useState,useEffect } from "react";
 
-export function MovieDetails({ movielist }) {
+export function MovieDetails() {
+
   let history = useHistory();
 
   const { id } = useParams();
 
-  const movie = movielist[id];
+  // const movie = movielist[id];
+  const [movie, setMovie] = useState([]);
+  useEffect(()=>{
+    fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id)
+.then(data=>data.json())
+.then(mvn=>
+    setMovie(mvn))
+    
+  },[])
 
   return (
     <div className="movie-trailer">
