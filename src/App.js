@@ -30,6 +30,8 @@ import Paper from '@mui/material/Paper';
 // import { nullableTypeAnnotation } from "@babel/types";
 import {Game} from './Game';
 
+import { BasicForm } from "./BasicForm";
+
 function App() {
   // let initial_movielist = [
   //   {
@@ -115,6 +117,9 @@ function App() {
             <Button startIcon={<ColorLensIcon/>} color="inherit" variant="text" onClick={()=>history.push("/game")}>
               Game
             </Button>
+            <Button startIcon={<ColorLensIcon/>} color="inherit" variant="text" onClick={()=>history.push("/form")}>
+             FORM
+            </Button>
             <Button startIcon={mode==="dark"? <BrightnessHighIcon/>:<BrightnessMediumIcon/>} color="inherit" variant="text"  style={{marginLeft:"auto"}} onClick={()=>setMode(mode==="dark"? "light":"dark")}>
             { mode==="dark"? "Light" : "Dark"} Mode
             </Button>
@@ -156,6 +161,9 @@ function App() {
         <Route exact path="/game">
           <Game />
         </Route>
+        <Route exact path="/form">
+          <BasicForm />
+        </Route>
         <Route path="**">
           <NotFound />
         </Route>
@@ -180,4 +188,6 @@ function NotFound() {
 }
 
 export default App;
+
+
 

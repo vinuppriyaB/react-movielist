@@ -4,61 +4,57 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
+
+const movieValidationSchema = yup.object({
+  name: yup.string().min(3, "too small").required("cool name "),
+
+  pic: yup.string().required("cool picture"),
+
+  summary: yup.string().required("cool picture"),
+
+  rating: yup.string().required("cool picture"),
+
+  trailer: yup.string().required("cool picture"),
+});
 
 export function EditDetail() {
   const {id}=useParams();
-  let history = useHistory();
-  const [movie, setMovie] = useState([]);
-  const [name, setName] = useState("");
-  const [pic, setPic] = useState("");
-  const [summary, setSummary] = useState("");
-  const [rating, setRating] = useState("");
-  const [trailer, setTrailer] = useState("");
   
-
+  const [movie, setMovie] = useState(null);
+  // const [name, setName] = useState("");
+  // const [pic, setPic] = useState("");
+  // const [summary, setSummary] = useState("");
+  // const [rating, setRating] = useState("");
+  // const [trailer, setTrailer] = useState("");
+  
+// const editMovie={ name:"",pic:"",rating:"",summary:"",trailer:"" };
   
   useEffect(()=>{
     fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id)
 .then((data)=>data.json())
 .then((mvn)=>
-    {setMovie(mvn);
-      setName(mvn.name);
-      setPic(mvn.pic);
-      setSummary(mvn.summary);
-      setRating(mvn.rating);
-      setTrailer(mvn.trailer);
+    {console.log(mvn);
+      setMovie(mvn);
+      
+      // setName(mvn.name);
+      // setPic(mvn.pic);
+      // setSummary(mvn.summary);
+      // setRating(mvn.rating);
+      // setTrailer(mvn.trailer);
     })
   },[])
-  console.log(movie);
   
-console.log(movie.name);
-   
-    console.log(name);
-    const resetMovieForm = (event) => {
-          setName("");
-          setPic("");
-          setSummary("");
-          setRating("");
-          setTrailer("");
-        };
+    // const resetMovieForm = (event) => {
+    //       setName("");
+    //       setPic("");
+    //       setSummary("");
+    //       setRating("");
+    //       setTrailer("");
+    //     };
 
-        const updateMovie = () => {
-              
-              const updated_detail={ name, pic, summary, rating, trailer }
-              fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id,
-              {
-                  method:"PUT",
-                  body: JSON.stringify(updated_detail),
-                  headers:{"Content-Type":"application/json"},
-              }).then(()=>{
-                  history.push("/movie");
-                  resetMovieForm();
-              }).catch((e)=> console.log("ERROR"))  
-              
-              
-             
-              resetMovieForm();
-            };  
+        
             
          
 
@@ -93,62 +89,131 @@ console.log(movie.name);
 //     console.log("after  " + movielist);
 //     resetMovieForm();
   // };
+  
+  return(
+    <div>
+      <UpdateEditedmovie movie={movie}/>
+
+    </div>
+
+  )
+  
+}
+
+export function UpdateEditedmovie({movie}){
+  let history = useHistory();
+  const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
+    useFormik({
+      initialValues: { name:"",pic:"",rating:"",summary:"",trailer:"" },
+      validationSchema: movieValidationSchema,
+      onSubmit: (newMovie) => {
+        console.log("submit", newMovie);
+        updateMovie(newMovie)
+      },
+    });
+    const updateMovie = (newMovie) => {
+              
+      // const updated_detail={ name, pic, summary, rating, trailer }
+      fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+movie.id,
+      {
+          method:"PUT",
+          body: JSON.stringify(newMovie),
+          headers:{"Content-Type":"application/json"},
+      }).then(()=>{
+          history.push("/movie");
+          // resetMovieForm();
+      }).catch((e)=> console.log("ERROR"))  
+      
+      
+     
+      // resetMovieForm();
+    };  
   return (
-    <div className="input_field">
-      <h1>{id}</h1>
+    <form className="input_field" onSubmit={handleSubmit}>
       <TextField
         className="input_text"
-        id="outlined-basic"
+        id="name"
+        name="name"
+        onChange={handleChange}
+        onBlur={handleBlur}
         label="Movie Name"
         variant="outlined"
-        value={name}
-        onChange={event => setName(event.target.value)} 
-        />
+        value={values.name}
+        error={errors.name && touched.name}
+        helperText={errors.name && touched.name && errors.name}
+
+        // onChange={(event) => setName(event.target.value)}
+      />
       <TextField
         className="input_text"
+        id="pic"
+        name="pic"
+        onChange={handleChange}
+        onBlur={handleBlur}
         id="outlined-basic"
         label="Poster Link"
         variant="outlined"
-        value={pic}
-        onChange={event => setPic(event.target.value)} 
-        />
+        value={values.pic}
+        error={errors.pic && touched.pic}
+        helperText={errors.pic && touched.pic && errors.pic}
+
+        // onChange={(event) => setPic(event.target.value)}
+      />
       <TextField
         className="input_text"
+        id="summary"
+        name="summary"
+        onChange={handleChange}
+        onBlur={handleBlur}
         id="outlined-basic"
         label="Summary"
         variant="outlined"
-        value={summary}
-        onChange={event => setSummary(event.target.value)} 
-        />
+        value={values.summary}
+        error={errors.summary && touched.summary}
+        helperText={errors.summary && touched.summary && errors.summary}
+
+        // onChange={(event) => setSummary(event.target.value)}
+      />
       <TextField
         className="input_text"
+        id="rating"
+        name="rating"
+        onChange={handleChange}
+        onBlur={handleBlur}
         id="outlined-basic"
         label="Rating"
         variant="outlined"
-        value={rating}
-        onChange={event => setRating(event.target.value)} 
-        />
+        value={values.rating}
+        error={errors.rating && touched.rating}
+        helperText={errors.rating && touched.rating && errors.rating}
+
+        // onChange={(event) => setRating(event.target.value)}
+      />
       <TextField
         className="input_text"
+        id="trailer"
+        name="trailer"
+        onChange={handleChange}
+        onBlur={handleBlur}
         id="outlined-basic"
         label="Tailer"
         variant="outlined"
-        value={trailer}
-        onChange={event => setRating(event.target.value)} 
-        
-        />
+        value={values.trailer}
+        error={errors.trailer && touched.trailer}
+        helperText={errors.trailer && touched.trailer && errors.trailer}
+
+        // onChange={(event) => setRating(event.target.value)}
+      />
       <Button
+      type="submit"
         variant="contained"
         onClick={() => {
-            updateMovie();
-            
-           
+          updateMovie();
         }}
       >
-        Save</Button>
-
-
-
-    </div>
+        save
+      </Button>
+    </form>
   );
+
 }
