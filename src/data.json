@@ -1,0 +1,77 @@
+[{
+    
+    "content": "what is javascript",
+    "answer": [
+        {
+            "username": "vinu",
+            "comment": "JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive. ... Incorporating JavaScript improves the user experience of the web page by converting it from a static page into an interactive one. To recap, JavaScript adds behavior to web pages."
+        },
+        {
+            "username": "john",
+            "comment": "JavaScript is a lightweight, cross-platform, and interpreted scripting language. It is well-known for the development of web pages, many non-browser environments also use it. ... Client-side: It supplies objects to control a browser and its Document Object Model (DOM)."
+        },
+        {
+            "username": "priya",
+            "comment": "JavaScript is a programming language commonly used in web development. It was originally developed by Netscape as a means to add dynamic and interactive elements to websites. ... For example, a JavaScript function may check a web form before it is submitted to make sure all the required fields have been filled out."
+        }
+        
+    ]
+},
+{
+    
+    "content": "what is react",
+    "answer": [
+        {
+            "username": "vinu",
+            "comment": "React. js is an open-source JavaScript library that is used for building user interfaces specifically for single-page applications. ... React allows developers to create large web applications that can change data, without reloading the page. The main purpose of React is to be fast, scalable, and simple."
+        },
+        {
+            "username": "john",
+            "comment": "Released by Facebook in 2013, React is a JavaScript library for building modern applications. React is used for handling the view layer and can be used for development of both web and mobile applications." 
+        },
+        {
+            "username": "priya",
+            "comment": "React. js/React is an open-source frontend framework that is based on JavaScript, developed by Facebook, and best known for its virtual DOM feature. With React, we recommend Express. js/Express as a backend service."  
+        }
+        
+    ]
+},
+{
+    
+    "content": "what is react component",
+    "answer": [
+        {
+            "username": "vinu",
+            "comment": "Components usually come in two types, functional components and class components, but today we will also be talking about pure components and higher-order components."
+        },
+        {
+            "username": "john",
+            "comment": "Components are often described as “just functions” but in our view they need to be more than that to be useful. In React, components describe any composable behavior, and this includes rendering, lifecycle, and state. ... It is possible that those ideas might make it back into React too in some form." 
+        },
+        {
+            "username": "priya",
+            "comment":"Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML. Components come in two types, Class components and Function components, in this tutorial we will concentrate on Function components." 
+       }
+        
+    ]
+},
+{
+    
+    "content": "what is hook in react",
+    "answer": [
+        {
+            "username": "vinu",
+            "comment": "A Hook is a react function that lets you use state and react features from a function based component. Hooks let you use the functions instead of switching between HOCs, Classes, and functions. As Hooks are regular Javascript functions, thus you can use the built-in Hooks and create your own custom one."
+        },
+        {
+            "username": "john",
+            "comment": "What are Hooks? “Hooks are a new addition to React in version 16.8 that allows you use state and other React features, like lifecycle methods, without writing a class.” ... Hooks let you always use functions instead of having to constantly switch between functions, classes, higher-order components, and render props." 
+        },
+        {
+            "username": "priya",
+            "comment":"Always use Hooks at the top level of your React function. By following this rule, you ensure that Hooks are called in the same order each time a component renders. That's what allows React to correctly preserve the state of Hooks between multiple useState and useEffect calls." 
+       }
+        
+    ]
+}
+]

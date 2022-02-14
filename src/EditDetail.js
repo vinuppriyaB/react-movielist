@@ -32,7 +32,7 @@ export function EditDetail() {
 // const editMovie={ name:"",pic:"",rating:"",summary:"",trailer:"" };
   
   useEffect(()=>{
-    fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id)
+    fetch("https://movies-shown.herokuapp.com/movies/"+id)
 .then((data)=>data.json())
 .then((mvn)=>
     {console.log(mvn);
@@ -92,7 +92,7 @@ export function EditDetail() {
   
   return(
     <div>
-      <UpdateEditedmovie movie={movie}/>
+      {movie ? <UpdateEditedmovie movie={movie}/> : ""}
 
     </div>
 
@@ -101,10 +101,11 @@ export function EditDetail() {
 }
 
 export function UpdateEditedmovie({movie}){
+  console.log("movie"+movie);
   let history = useHistory();
   const { handleSubmit, handleChange, handleBlur, values, errors, touched } =
     useFormik({
-      initialValues: { name:"",pic:"",rating:"",summary:"",trailer:"" },
+      initialValues: { name:movie.name,pic:movie.pic,rating:movie.rating,summary:movie.summary,trailer:movie.trailer },
       validationSchema: movieValidationSchema,
       onSubmit: (newMovie) => {
         console.log("submit", newMovie);
@@ -114,7 +115,7 @@ export function UpdateEditedmovie({movie}){
     const updateMovie = (newMovie) => {
               
       // const updated_detail={ name, pic, summary, rating, trailer }
-      fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+movie.id,
+      fetch("https://movie-projects.herokuapp.com/movies/"+movie.id,
       {
           method:"PUT",
           body: JSON.stringify(newMovie),

@@ -34,7 +34,7 @@ export function AddMovie() {
   const addMovie = (newMovie) => {
     // const newMovie={ name, pic, summary, rating,trailer };
 
-    fetch("https://6188a6edd0821900178d7435.mockapi.io/movies", {
+    fetch("https://movies-shown.herokuapp.com/movies", {
       method: "POST",
       body: JSON.stringify(newMovie),
       headers: { "Content-Type": "application/json" },

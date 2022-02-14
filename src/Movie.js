@@ -33,7 +33,7 @@ export function Movie({
 
   
   const deleteMovies=(id)=>{
-    fetch("https://6188a6edd0821900178d7435.mockapi.io/movies/"+id,
+    fetch("https://movies-shown.herokuapp.com/movies/"+id,
     {method:"DELETE",}).then(()=>getMovies())
           
   }

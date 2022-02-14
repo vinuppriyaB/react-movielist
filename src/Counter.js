@@ -13,7 +13,7 @@ export function Counter(){
   const [like,setLike] =useState(0);
   const [dislike,setdisLike]=useState(0);
   useEffect(()=>{
-    console.log("change");
+    // console.log("change");
     
   })
    return (

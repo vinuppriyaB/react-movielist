@@ -31,6 +31,7 @@ import Paper from '@mui/material/Paper';
 import {Game} from './Game';
 
 import { BasicForm } from "./BasicForm";
+import {ReduceHook} from "./ReduceHook.js";
 
 function App() {
   // let initial_movielist = [
@@ -108,18 +109,6 @@ function App() {
             <Button startIcon={<AddCircleIcon/>} color="inherit" variant="text" onClick={()=>history.push("/movie/add")}>
               Add Movie
             </Button>
-            <Button startIcon={<TheatersIcon/>} color="inherit" variant="text" onClick={()=>history.push("/movie")}>
-              movie
-            </Button>
-            <Button startIcon={<ColorLensIcon/>} color="inherit" variant="text" onClick={()=>history.push("/color")}>
-              color
-            </Button>
-            <Button startIcon={<ColorLensIcon/>} color="inherit" variant="text" onClick={()=>history.push("/game")}>
-              Game
-            </Button>
-            <Button startIcon={<ColorLensIcon/>} color="inherit" variant="text" onClick={()=>history.push("/form")}>
-             FORM
-            </Button>
             <Button startIcon={mode==="dark"? <BrightnessHighIcon/>:<BrightnessMediumIcon/>} color="inherit" variant="text"  style={{marginLeft:"auto"}} onClick={()=>setMode(mode==="dark"? "light":"dark")}>
             { mode==="dark"? "Light" : "Dark"} Mode
             </Button>
@@ -148,22 +137,12 @@ function App() {
           <MovieDetails />
         </Route>
         
-        <Route path="/color">
-          <ColorList />
-        </Route>
-        <Route path="/movie">
+
+        <Route path="/">
           <Movielist  />
         </Route>
 
-        <Route exact path="/">
-          <Welcome />
-        </Route>
-        <Route exact path="/game">
-          <Game />
-        </Route>
-        <Route exact path="/form">
-          <BasicForm />
-        </Route>
+
         <Route path="**">
           <NotFound />
         </Route>
