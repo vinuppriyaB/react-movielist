@@ -115,7 +115,7 @@ export function UpdateEditedmovie({movie}){
     const updateMovie = (newMovie) => {
               
       // const updated_detail={ name, pic, summary, rating, trailer }
-      fetch("https://movie-projects.herokuapp.com/movies/"+movie.id,
+      fetch("https://movies-shown.herokuapp.com/movies/"+movie.id,
       {
           method:"PUT",
           body: JSON.stringify(newMovie),
