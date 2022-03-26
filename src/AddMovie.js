@@ -5,6 +5,7 @@ import { useHistory } from "react-router";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
+ // const [name, setName] = useState("");
 const movieValidationSchema = yup.object({
   name: yup.string().min(3, "too small").required("cool name "),
 
